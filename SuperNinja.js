@@ -26,19 +26,24 @@ class Ninja {
 
   drinkSake = () => {
     // This should add +10 Health to the Ninja
+    console.log(`${this.name} Drank some sake.`)
     return this.health -= 10;
   }
 }
 
-//TESTS
-const ninja1 = new Ninja("Hyabusa");
-ninja1.sayName();
-ninja1.showStats();
-ninja1.drinkSake();
-ninja1.showStats();
+class Sensei extends Ninja {
+  constructor(name, health, speed, strength, wisdom) {
+    super(name, health || 120, speed || 8, strength || 8, wisdom);
+    this.wisdom = wisdom || 10;
+  }
 
-const ninja2 = new Ninja("Bob", 150, 8, 8);
-ninja2.sayName();
-ninja2.showStats();
-ninja2.drinkSake();
-ninja2.showStats();
+  speakWisdom = () => {
+    console.log(`What one programmer can do in one month, 2 programmers can do in 2 months.`);
+  }
+}
+
+const SuperSensei = new Sensei("Bob");
+SuperSensei.showStats();
+SuperSensei.drinkSake();
+SuperSensei.showStats();
+SuperSensei.speakWisdom();
